@@ -1,10 +1,22 @@
 import React from "react";
-// import { data } from "../data";
+import { data } from "../data";
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
 
-function App(props) {
-  const movies = props.store.getState();
+ class App extends React.Component {
+  componentDidMount () {
+    const { store } = this.props;
+
+    store.subscribe(()=> { // step 2 (when change in state)
+      this.forceUpdate();
+    })
+    store.dispatch({   // step 1
+      type: 'ADD_MOVIES',
+      movies: data
+    })
+  }
+  render() {
+  const movies = this.props.store.getState();
   return (
     <div className="App">
       <Navbar/>
@@ -26,6 +38,7 @@ function App(props) {
       </div>
     </div>
   );
+ }
 }
 
 export default App;
