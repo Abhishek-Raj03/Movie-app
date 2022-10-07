@@ -12,9 +12,23 @@ import { addMovies } from "../actions";
       this.forceUpdate();
     })
     store.dispatch(addMovies(data)); // step 1
+
+    console.log('STATE: ',store.getState())
+  }
+
+  isMovieFavourite = (movie)=> {
+    const { favourites } = this.props.store.getState();
+    const index = favourites.indexOf(movie);
+
+      if(index !== -1) 
+      return true;
+        
+      else return false;
   }
   render() {
   const { list } = this.props.store.getState();
+  console.log('RENDER: ',this.props.store.getState())
+
   return (
     <div className="App">
       <Navbar/>
@@ -26,7 +40,12 @@ import { addMovies } from "../actions";
 
          <div className="list">
            {list.map((movie,index) => (
-            <MovieCard movie={movie} key={`movie-${index}`}/>
+           <MovieCard 
+              movie={movie} 
+              key={`movie-${index}`} 
+              dispatch={this.props.store.dispatch}
+              isFavourite={this.isMovieFavourite(movie)}
+            />
            ))}
 
            {/* {data.map((movie)=> {
