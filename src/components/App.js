@@ -2,6 +2,7 @@ import React from "react";
 import { data } from "../data";
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
+import { addMovies } from "../actions";
 
  class App extends React.Component {
   componentDidMount () {
@@ -10,13 +11,10 @@ import MovieCard from "./MovieCard";
     store.subscribe(()=> { // step 2 (when change in state)
       this.forceUpdate();
     })
-    store.dispatch({   // step 1
-      type: 'ADD_MOVIES',
-      movies: data
-    })
+    store.dispatch(addMovies(data)); // step 1
   }
   render() {
-  const movies = this.props.store.getState();
+  const { list } = this.props.store.getState();
   return (
     <div className="App">
       <Navbar/>
@@ -27,7 +25,7 @@ import MovieCard from "./MovieCard";
          </div>
 
          <div className="list">
-           {movies.map((movie,index) => (
+           {list.map((movie,index) => (
             <MovieCard movie={movie} key={`movie-${index}`}/>
            ))}
 
