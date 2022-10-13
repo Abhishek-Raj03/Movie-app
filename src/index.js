@@ -1,5 +1,6 @@
 // npm install redux
-//npm install redux-logger
+//npm install redux-logger (no need here)
+// npm install redux-thunk
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import { createStore } from 'redux';
@@ -9,6 +10,9 @@ import './index.css';
 import App from './components/App';
 // import { configure } from '@testing-library/react';
 import rootReducer from './reducers';
+
+// used between action and reducer to differentiate action types
+import thunk from 'redux-thunk'; 
 
 // function logger(obj,next,action)
 // logger(obj)(next)(action)
@@ -22,12 +26,22 @@ import rootReducer from './reducers';
 //   }
 // }
 const logger = ({dispatch, getState}) => (next) => (action) => {
-  console.log('action_type: ',action.type);
-        next(action);
+  if(typeof action !== 'function') {
+    console.log('action_type: ',action.type);
+  }
+    next(action);
 }
 
+// const thunk = ({dispatch, getState}) => (next) => (action) => {
+//   if(typeof action === 'function'){
+//     action(dispatch);
+//     return;
+//   }
+//    next(action);
+// }
+
 // const store = createStore(movies);
-const store = configureStore({reducer: rootReducer, middleware: [logger]});
+const store = configureStore({reducer: rootReducer, middleware: [logger,thunk]});
 // console.log('store: ',store)
 // console.log('BEFORE_STATE: ',store.getState())
 

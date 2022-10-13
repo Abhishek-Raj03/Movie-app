@@ -38,12 +38,14 @@ import { addMovies, setShowFavourits } from "../actions";
 
   return (
     <div className="App">
-      <Navbar/>
-      <div className="main">
+        <Navbar 
+          dispatch={this.props.store.dispatch}
+        />
+        <div className="main">
          <div className="tabs">
           <div className={`tab ${showFavourites ? '' : 'active-tabs'}`} onClick={()=>{this.onChangeTab(false)}}>Movies</div>
           <div className={`tab ${showFavourites ? 'active-tabs' : ''}`} onClick={()=>{this.onChangeTab(true)}}>Favourites</div>
-         </div>
+        </div>
 
          <div className="list">
            {displayMovies.map((movie,index) => (
