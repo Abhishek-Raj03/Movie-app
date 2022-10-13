@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
 import { ADD_MOVIES,
-    ADD_FAVOURITE, 
-    REMOVE_FAVOURITE, 
-    SET_SHOW_FAVOURITES } from "../actions";
+         ADD_FAVOURITE, 
+         REMOVE_FAVOURITE, 
+         SET_SHOW_FAVOURITES } from "../actions";
 
 const initialMovieState={
    list: [],
