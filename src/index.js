@@ -1,9 +1,14 @@
 // npm install redux
 //npm install redux-logger (no need here)
 // npm install redux-thunk
+// npm i react-redux
 import React from 'react';
+import { Provider } from 'react-redux';
+
 import ReactDOM from 'react-dom/client';
 // import { createStore } from 'redux';
+
+// for redux store
 import { configureStore } from '@reduxjs/toolkit'
 // import { createLogger } from 'redux-logger'
 import './index.css';
@@ -51,10 +56,30 @@ const store = configureStore({reducer: rootReducer, middleware: [logger,thunk]})
 // })
 // console.log('AFTER_STATE: ',store.getState())
 
+// context is used to pass a value to children without using props
+//now we dont need context as we will be using react-redux package
+// export const storeContext = createContext(); 
+// console.log('storecontext: ',storeContext);
+
+// context provider provides the value/store/or any variable which is passed
+// class Provider extends React.Component {
+//    render() {
+//     const { store } = this.props;
+//     return (
+//       <storeContext.Provider value={store}> 
+//         {this.props.children}
+
+//       </storeContext.Provider>
+//     )
+//    }
+// }
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App store={store}/>
+    <Provider store={store}>
+    <App />
+    </Provider>
   </React.StrictMode>
 );
 
