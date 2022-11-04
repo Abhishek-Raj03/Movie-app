@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+<!-- # Getting Started with Create React App
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +68,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+
+# Movie-App
+
+## Description
+Created a Movie Web App using React where you can discover Movies and TV shows
+
+## Features
+* search a movie
+* Add to Favourites
+* show Description,IMDB,Poster
+
+## Technology Used
+* ReactJS
+* Redux
+* API used: http://www.omdbapi.com/?
+
+![Alt text](screenshorts/Screenshot_20221105_022337.png)
+
+![Alt text](screenshorts/Screenshot_20221105_022459.png)
+
